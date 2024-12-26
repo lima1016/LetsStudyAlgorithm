@@ -10,12 +10,14 @@
 # 주어진 문자열을 모두 0 혹은 모두 1로 같게 만드는 최소 횟수를 반환하시오.
 # "0001100"
 
-input = "011110"
 
 def find_count_to_turn_out_to_all_zero_or_all_one(string):
     # 이 부분을 채워보세요!
-    return 1
+    count = 0
+    start_index = 0
 
 
+
+input = "011110"
 result = find_count_to_turn_out_to_all_zero_or_all_one(input)
 print(result)
