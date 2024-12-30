@@ -10,11 +10,27 @@
 # 주어진 문자열을 모두 0 혹은 모두 1로 같게 만드는 최소 횟수를 반환하시오.
 # "0001100"
 
-
+# 0 에서 1을 마주쳤을때 뒤집는다 -> 전체를 0으로 만들기 위한 작업
+# 1 에서 0을 마주쳤을때 뒤집는다 -> 전체를 1으로 만들기 위한 작업
 def find_count_to_turn_out_to_all_zero_or_all_one(string):
-    pass
+    count_to_all_zero = 0
+    count_to_all_one = 0
+
+    # 맨 처음 숫자는 뒤집지 안아서 이부분을 반영해줘야 한다.
+    if string[0] == "0":
+        count_to_all_one += 1       # 맨앞이 0이라면 0을 1로 뒤집는 숫자 추가
+    elif string[0] == "1":
+        count_to_all_zero += 1      # 맨앞이 1이라면 1을 0로 뒤집는 숫자 추가
+
+    for i in range(len(string) - 1):        # i 는 0부터 문자열의 길이 -2 까지가 된다.
+        if string[i] != string[i + 1]:      # 앞의 숫자와 뒤에 숫자가 다르다면
+            if string[i + 1] == "1":
+                count_to_all_zero += 1
+            if string[i + 1] == "0":
+                count_to_all_one += 1
+    return min(count_to_all_zero, count_to_all_one)     # 최소값을 반환하는 함수 min()
 
 
-input = "011110"
+input = "0001100"
 result = find_count_to_turn_out_to_all_zero_or_all_one(input)
 print(result)
